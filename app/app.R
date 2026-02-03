@@ -288,7 +288,7 @@ server <- function(input, output, session){
   
   #function for search button
   gene_image <- reactive({
-    filename <- normalizePath(file.path('./data/genes_exp',
+    filename <- normalizePath(file.path('./genes_exp',
                                         paste(input$genes_1,".png" , sep="")))
     tags$img(src = filename,
              class = "responsive-img",
@@ -320,7 +320,7 @@ server <- function(input, output, session){
   
   #output for bright field images on tab3
   output$bf_img <- renderUI({
-    filename <- normalizePath(file.path('./data/hires_images',
+    filename <- normalizePath(file.path('./hires_images',
                                         paste(input$select2, ".jpg" , sep="")))
     tags$img(src = filename,
              class = "responsive-img",
@@ -351,7 +351,7 @@ server <- function(input, output, session){
     # Build the path based on selections
     folder <- tolower(input$category)
     file_name <- input$subcategory %>% str_remove_all("\\s") %>% tolower()
-    filename <- normalizePath(file.path('./data/stdeconvolve',folder,
+    filename <- normalizePath(file.path('./stdeconvolve',folder,
                                         paste(file_name, ".pdf" , sep="")))
     
     tags$embed(
